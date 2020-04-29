@@ -1,0 +1,46 @@
+Package: AmyloGram
+Type: Package
+Title: Prediction of Amyloid Proteins
+Version: 1.0
+LazyData: TRUE
+Date: 2020-05-01
+Authors@R: c(person("Michal", "Burdukiewicz", 
+           email = "michalburdukiewicz@gmail.com", 
+           comment = c(ORCID = "0000-0001-8926-582X"),
+           role = c("cre", "aut")),
+           person("Katarzyna", "Sidorczuk", 
+           email = "sidorczuk.katarzyna17@gmail.com",
+           role = c("ctb")),
+           person("Filip", "Pietluch", 
+           email = "fpietluch@gmail.com",
+           role = c("ctb")),
+           person("Dominik", "Rafacz", 
+           email = "dominikrafacz@gmail.com",
+           role = c("aut")),
+           person("Stefan", "Roediger", 
+           email = "stefan.roediger@b-tu.de", 
+           comment = c(ORCID = "0000-0002-1441-6512"),
+           role = c("ctb")),
+           person("Jaroslaw", "Chilimoniuk", 
+           email = "jaroslaw.chilimoniuk@gmail.com", 
+           comment = c(ORCID = "0000-0001-5467-018X"),
+           role = c("ctb")))
+Description: Predicts antimicrobial peptides using random forests trained on the
+    n-gram encoded peptides. The implemented algorithm can be accessed from
+    both the command line and shiny-based GUI.
+License: GPL-3
+URL: https://github.com/michbur/AmpGram
+BugReports: https://github.com/michbur/AmpGram/issues
+Encoding: UTF-8
+Depends:
+    R (>= 3.0.0)
+Imports:
+    biogram,
+    ranger,
+    shiny
+Suggests:
+    dplyr,
+    DT,
+    markdown,
+    shinythemes
+Repository: CRAN
