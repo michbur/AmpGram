@@ -1,6 +1,6 @@
-Package: AmyloGram
+Package: AmpGram
 Type: Package
-Title: Prediction of Amyloid Proteins
+Title: Prediction of antimicrobial peptides
 Version: 1.0
 LazyData: TRUE
 Date: 2020-05-01
