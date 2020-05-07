@@ -21,6 +21,7 @@
 #' predict(AmpGram_model, sample_seq)
 
 predict.ampgram_model <- function(object, newdata, ...) {
+  require_AmpGramModel()
   
   ngrams <- object[["imp_features"]]
     
