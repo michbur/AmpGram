@@ -48,7 +48,7 @@ install_AmpGramModel <- function() {
 
 is_AmpGramModel_installed <- function() {
   check_AmpGramModel <- try(find.package("AmpGramModel"), silent = TRUE)
-  inherits(check_AmpGramModel, "try-error")
+  !inherits(check_AmpGramModel, "try-error")
 }
 
 require_AmpGramModel <- function() {
