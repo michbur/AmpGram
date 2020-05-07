@@ -18,6 +18,7 @@
 #' @name AmpGram-package
 #' @aliases AmpGram-package AmpGram
 #' @docType package
+#' @importFrom utils menu
 #' @author
 #' Maintainer: Michal Burdukiewicz <michalburdukiewicz@@gmail.com>
 #' @references Burdukiewicz M, Sidorczuk K, Rafacz D, Pietluch F, Chilimoniuk J,

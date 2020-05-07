@@ -8,6 +8,7 @@ count_longest <- function(x) {
     }
 }
 
+#' @importFrom stats median
 calculate_statistics <- function(pred) {
   data.frame(fraction_true = mean(pred > 0.5),
              pred_mean = mean(pred),

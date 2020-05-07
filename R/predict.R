@@ -7,6 +7,7 @@
 #' @param ... further arguments passed to or from other methods.
 #' @export
 #' @importFrom biogram binarize decode_ngrams
+#' @importFrom stats predict
 #' @importFrom stringi stri_count
 #' @examples
 #' data(AmpGram_model)

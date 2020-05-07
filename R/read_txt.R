@@ -8,6 +8,7 @@
 #' connection contains no characters, function prompts warning and returns \code{NULL}.
 #' @details The input file should contain one or more amino acid sequences separated by 
 #' empty line(s).
+#' @importFrom biogram read_fasta
 #' @export
 #' @keywords manip
 
@@ -43,7 +44,7 @@ read_txt <- function(connection) {
         paste0(">sequence", i))
       content[content == ""] <- prot_names
     }
-    read.fasta(textConnection(content), seqtype = "AA", as.string = FALSE)
+    read_fasta(textConnection(content))
   } else {
     warning("No text detected.")
     NULL

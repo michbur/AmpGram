@@ -36,9 +36,10 @@ Depends:
     R (>= 3.0.0)
 Imports:
     biogram,
+    devtools,
     ranger,
     shiny,
-    devtools
+    stringi
 Suggests:
     dplyr,
     DT,
