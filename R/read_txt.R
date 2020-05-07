@@ -12,6 +12,8 @@
 #' @keywords manip
 
 read_txt <- function(connection) {
+  require_AmpGramModel()
+  
   content <- readLines(connection)
   
   #test for empty content

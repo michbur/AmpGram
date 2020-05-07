@@ -37,7 +37,8 @@ Depends:
 Imports:
     biogram,
     ranger,
-    shiny
+    shiny,
+    devtools
 Suggests:
     dplyr,
     DT,

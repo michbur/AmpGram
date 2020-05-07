@@ -21,6 +21,7 @@
 #' predict(AmpGram_model, sample_seq)
 
 predict.ampgram_model <- function(object, newdata, ...) {
+  require_AmpGramModel()
   
   ngrams <- object[["imp_features"]]
     
@@ -66,7 +67,6 @@ calculate_statistics <- function(pred) {
 }
 
 find_ngrams <- function(seq, decoded_ngrams) {
-  
   end_pos <- 10L:length(seq)
   start_pos <- end_pos - 9
   
