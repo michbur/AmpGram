@@ -44,3 +44,4 @@ Suggests:
     markdown,
     shinythemes
 Repository: CRAN
+RoxygenNote: 7.1.0
