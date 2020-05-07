@@ -5,5 +5,7 @@
 #' @importFrom shiny runApp
 #' @section Warning : Any ad-blocking software may cause malfunctions.
 #' @export AmpGram_gui
-AmpGram_gui <- function()
+AmpGram_gui <- function() {
+  require_AmpGramModel()
   runApp(system.file("AmpGram", package = "AmpGram"))
+}

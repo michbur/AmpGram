@@ -1,12 +1,12 @@
 library(shiny)
 library(ggplot2)
-#library(AmpGram)
+library(AmpGram)
 library(dplyr)
 library(DT)
 library(shinythemes)
 library(markdown)
 
-data(AmyloGram_model)
+data(AmpGram_model)
 data(spec_sens)
 
 options(shiny.maxRequestSize=10*1024^2)
