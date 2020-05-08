@@ -5,7 +5,8 @@ library(AmpGramModel)
 library(ranger)
 library(DT)
 library(shinythemes)
-library(markdown)
+library(rmarkdown)
+library(pander)
 
 source("shiny-server-utils.R")
 
@@ -96,7 +97,7 @@ shinyServer(function(input, output) {
   })
   
   
-  for (i in 1L:300) {
+  for (i in 1L:50) {
     local({
       my_i <- i
       

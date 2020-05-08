@@ -22,7 +22,7 @@ img {
 }
 </style>
 
-```{r,results='asis',echo=FALSE}
+```{r, results='asis', echo=FALSE}
 file_name <- ifelse(is.null(input[["seq_file"]][["name"]]), "none",
                     input[["seq_file"]][["name"]])
 cat("**Input file name**: ", file_name, "\n\n")
@@ -32,10 +32,11 @@ cat(paste0("**Date**: ", Sys.time()), "\n\n")
 
 
 ```{r, echo=FALSE, fig.width=10, results='asis'}
-for (i in prediction()) {
-  cat("\n\n## ", sep = "")
-  summary(i, double_linebreak = TRUE)
-  plot(i)
+
+for (i in 1L:length(detailed_preds())) {
+  #cat("\n\n## ", names(detailed_preds())[[i]], sep = "")
+  print(plot_single_protein(detailed_preds()[[i]]))
+  print(knitr::kable(get_AMPs(selected_proteins()[[i]])))
 }
 ```
 
@@ -43,7 +44,7 @@ for (i in prediction()) {
 
 This analysis was provided by [**AmpGram**](https://github.com/michbur/AmpGram)
 
-```{r}
+```{r, echo=FALSE}
 pander(sessionInfo())
 ```
 
