@@ -48,7 +48,7 @@ library(AmpGram)
 library(biogram)
 install_AmpGramModel()
 sequences <- read_fasta(system.file("AmpGram/prots.txt", package = "AmpGram"))
-predict(AmpGramModel,sequences)
+predict(AmpGramModel, sequences)
 ```
 Unix/macOS: curl
 ------------------------
