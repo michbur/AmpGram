@@ -52,10 +52,33 @@ predict(AmpGramModel, sequences)
 ```
 Unix/macOS: curl
 ------------------------
-Function that installs AmpGramModel uses devtools library to install package from GitHub. 
-On Unix and macOS systems you may encounter error concerning curl library. To install devtools 
-dependencies run the following command:
+Function that installs AmpGramModel uses devtools library dependent on curl. 
+If you encounter an error concerning curl, please follow instructions below to install curl (adapted from https://github.com/jeroen/curl).
+
+Binary packages for OS-X or Windows can be installed directly from CRAN:
+
+```r
+install.packages("curl")
+```
+
+Installation from source on Linux requires `libcurl`. On Debian or Ubuntu use libcurl4-openssl-dev:
 
 ```bash
-sudo apt-get install libcurl4-openssl-dev libssl-dev
+sudo apt-get install -y libcurl-dev
 ```
+
+On Fedora, CentOS or RHEL use libcurl-devel:
+
+```bash
+sudo yum install libcurl-devel
+```
+
+On OS-X libcurl is included with the system so nothing extra is needed. However if you want to build against the most recent version of libcurl, install and force-link curl from homebrew:
+
+```bash
+brew install curl
+brew link --force curl
+```
+
+Note that on OS-X you must recompile the R package from source after force-linking curl, otherwise you get a version conflict with the system version of libcurl.
+
