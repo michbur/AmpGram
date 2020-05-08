@@ -146,10 +146,11 @@ shinyServer(function(input, output) {
       
     } else {
       tabsetPanel(
-        tabPanel("Results (tabular)",
+        tabPanel("Results",
+                 p("Select at least one protein to produce detailed results."), 
                  dataTableOutput("decision_table")
         ),
-        tabPanel("Results (graphical)",
+        tabPanel("Detailed results",
                  uiOutput("detailed_tab")
         )
       )
