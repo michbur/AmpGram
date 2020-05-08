@@ -34,3 +34,26 @@ data(AmpGram_model)
 data(pep424)
 predict(AmpGram_model, pep424[1L:20])
 ```
+
+Installing dependency: AmpGramModel
+------------------------
+To be able to use AmpGram properly, you should have installed 'AmpGramModel' package available via GitHub. 
+AmpGramModel contains stacked random forest model and informative n-grams required for prediction of antimicrobial peptides.
+Due to the large size of a model, it needs to be stored in the external repository, as CRAN do not allow upload of files
+larger than 5 MB. 
+
+You can install AmpGramModel using the AmpGram function:
+
+```R
+install_AmpGramModel()
+```
+
+Unix/macOS: curl
+------------------------
+Function that installs AmpGramModel uses devtools library to install package from GitHub. 
+On Unix and macOS systems you may encounter error concerning curl library. To install devtools 
+dependencies run the following command:
+
+```bash
+sudo apt-get install libcurl4-openssl-dev libssl-dev
+```

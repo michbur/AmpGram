@@ -39,7 +39,13 @@ find_ngrams <- function(seq, decoded_ngrams) {
   res
 }
 
-
+#' Install AmpGramModel package containing model for AMP prediction
+#' 
+#' Installs AmpGramModel package containing model required for prediction
+#' of antimicrobial peptides. Due to large size of our model and file size 
+#' limit on CRAN, it needs to be stored in the external repository.
+#' See readme for more information or in case of installation problems. 
+#' 
 #' @export
 #' @importFrom devtools install_github
 install_AmpGramModel <- function() {
