@@ -14,6 +14,10 @@
 #' 
 #' AmpGram is available as R function (\code{\link{predict.ampgram_model}}) or
 #' shiny GUI (\code{\link{AmpGram_gui}}).
+#' 
+#' AmpGram requires the external package, AmpGramModel, which 
+#' contains models necessary to perform the prediction. The model 
+#' can be installed using \code{\link{install_AmpGramModel}}
 #'
 #' @name AmpGram-package
 #' @aliases AmpGram-package AmpGram

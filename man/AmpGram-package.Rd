@@ -21,6 +21,10 @@ successfully predict antimicrobial peptides in proteomes.
 \details{
 AmpGram is available as R function (\code{\link{predict.ampgram_model}}) or
 shiny GUI (\code{\link{AmpGram_gui}}).
+
+AmpGram requires the external package, AmpGramModel, which 
+contains models necessary to perform the prediction. The model 
+can be installed using \code{\link{install_AmpGramModel}}
 }
 \references{
 Burdukiewicz M, Sidorczuk K, Rafacz D, Pietluch F, Chilimoniuk J,

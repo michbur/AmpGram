@@ -7,11 +7,15 @@
 get_AMPs(x)
 }
 \arguments{
-\item{x}{results of prediction as produced by \code{\link{predict.ampgram_model}}}
+\item{x}{AmpGram predictions for a single protein}
 }
 \value{
 a data.frame with sequences recognized as antimicrobial peptides
 }
 \description{
 Function gets sequences recognized as antimicrobial peptides and returns as data.frame.
+}
+\examples{
+data(AmpGram_predictions)
+get_AMPs(AmpGram_predictions[[2]])
 }

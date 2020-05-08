@@ -11,6 +11,8 @@
 #' @importFrom biogram read_fasta
 #' @export
 #' @keywords manip
+#' @examples 
+#' (sequences <- read_txt(system.file("AmpGram/prots.txt", package = "AmpGram")))
 
 read_txt <- function(connection) {
   require_AmpGramModel()

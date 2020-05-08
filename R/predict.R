@@ -6,6 +6,9 @@
 #' \code{\link[biogram]{read_fasta}}).
 #' @param ... further arguments passed to or from other methods.
 #' @export
+#' @details AmpGram requires the external package, AmpGramModel, which 
+#' contains models necessary to perform the prediction. The model 
+#' can be installed using \code{\link{install_AmpGramModel}}.
 #' @importFrom biogram binarize decode_ngrams
 #' @importFrom pbapply pblapply
 #' @importFrom ranger ranger

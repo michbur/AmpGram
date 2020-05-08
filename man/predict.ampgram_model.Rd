@@ -17,3 +17,8 @@
 \description{
 Recognizes antimicrobial peptides using the AmpGram algorithm.
 }
+\details{
+AmpGram requires the external package, AmpGramModel, which 
+contains models necessary to perform the prediction. The model 
+can be installed using \code{\link{install_AmpGramModel}}.
+}

@@ -1,10 +1,12 @@
 #' Get putative antimicrobial peptides
 #' 
 #' Function gets sequences recognized as antimicrobial peptides and returns as data.frame. 
+#' @param x AmpGram predictions for a single protein
 #' @return a data.frame with sequences recognized as antimicrobial peptides
-#' @inheritParams pred2df
 #' @export
-
+#' @examples 
+#' data(AmpGram_predictions)
+#' get_AMPs(AmpGram_predictions[[2]])
 get_AMPs <- function(x) {
   tenmer_start <- 1L:length(x[["all_mers_pred"]])
   only_AMP_start <- tenmer_start[x[["all_mers_pred"]] > 0.5]

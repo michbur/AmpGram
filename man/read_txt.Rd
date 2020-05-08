@@ -20,4 +20,7 @@ Read sequence data saved in text file.
 The input file should contain one or more amino acid sequences separated by 
 empty line(s).
 }
+\examples{
+(sequences <- read_txt(system.file("AmpGram/prots.txt", package = "AmpGram")))
+}
 \keyword{manip}

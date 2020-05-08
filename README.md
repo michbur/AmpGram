@@ -45,10 +45,11 @@ Antimicrobial peptides might be also identified in the batch mode:
 
 ```R
 library(AmpGram)
-library(biogram)
-install_AmpGramModel()
-sequences <- read_fasta(system.file("AmpGram/prots.txt", package = "AmpGram"))
-predict(sequences,"new_file")
+library(AmpGramModel)
+# if you do not have AmpGramModel use:
+# install_AmpGramModel()
+sequences <- read_txt(system.file("AmpGram/prots.txt", package = "AmpGram"))
+predict(AmpGram_model, sequences)
 ```
 Unix/macOS: curl
 ------------------------

@@ -17,3 +17,7 @@ a data.frame containing sequences with their probabilities
 Convert predictions to data.frame
 Return predictions as data.frame
 }
+\examples{
+data(AmpGram_predictions)
+pred2df(AmpGram_predictions)
+}
