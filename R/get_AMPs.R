@@ -1,7 +1,6 @@
 #' Get putative antimicrobial peptides
 #' 
 #' Function gets sequences recognized as antimicrobial peptides and returns as data.frame. 
-#' @param x \code{list} of sequences.
 #' @return a data.frame with sequences recognized as antimicrobial peptides
 #' @inheritParams pred2df
 #' @export

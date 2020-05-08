@@ -37,6 +37,7 @@ Depends:
 Imports:
     biogram,
     devtools,
+    pbapply,
     ranger,
     shiny,
     stringi

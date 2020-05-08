@@ -2,13 +2,16 @@
 % Please edit documentation in R/get_AMPs.R
 \name{get_AMPs}
 \alias{get_AMPs}
-\title{Get putative AMPs}
+\title{Get putative antimicrobial peptides}
 \usage{
 get_AMPs(x)
 }
 \arguments{
 \item{x}{results of prediction as produced by \code{\link{predict.ampgram_model}}}
 }
+\value{
+a data.frame with sequences recognized as antimicrobial peptides
+}
 \description{
-Get putative AMPs
+Function gets sequences recognized as antimicrobial peptides and returns as data.frame.
 }
