@@ -2,13 +2,18 @@
 % Please edit documentation in R/pred2df.R
 \name{pred2df}
 \alias{pred2df}
-\title{Convert predictions to data.frame}
+\title{Convert predictions to data.frame
+Return predictions as data.frame}
 \usage{
 pred2df(x)
 }
 \arguments{
 \item{x}{results of prediction as produced by \code{\link{predict.ampgram_model}}}
 }
+\value{
+a data.frame containing sequences with their probabilities
+}
 \description{
 Convert predictions to data.frame
+Return predictions as data.frame
 }
