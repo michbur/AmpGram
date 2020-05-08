@@ -4,9 +4,9 @@
 
 **Restrictions**:
 * Be patient - calculations can take up to few minutes.  
-* Up to 50 sequences may be analyzed at the same time using web server. If you need larger query, please use the [AmyloGram](https://CRAN.R-project.org/package=AmyloGram) package for **R**.
+* Up to 50 sequences may be analyzed at the same time using web server. If you need larger query, please use the [AmpGram](https://CRAN.R-project.org/package=AmpGram) package for **R**.
 
-**Authors**: [Michal Burdukiewicz](https://github.com/michbur), Katarzyna Sidorczuk, Dominik Rafacz, Filip Pietluch, Jarosław Chilimoniuk, Stefan Rödiger and Przemysław Gagat
+**Authors**: [Michal Burdukiewicz](https://github.com/michbur), Dominik Rafacz, Katarzyna Sidorczuk, Filip Pietluch
 
 **Citation**:
-Burdukiewicz, M., Sobczyk, P., Rödiger, S., Duda-Madej, A., Mackiewicz, P., and Kotulska, M. (in review). AmpGram: a proteome screening tool for prediction and design of antimicrobial peptides
+Burdukiewicz, M., Sidorczuk, K., Rafacz, D., Pietluch, F., Chilimoniuk, J., Rödiger, S.  and Gagat, P. AmpGram: a proteome screening tool for prediction and design of antimicrobial peptides
