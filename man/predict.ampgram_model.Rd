@@ -2,7 +2,7 @@
 % Please edit documentation in R/predict.R
 \name{predict.ampgram_model}
 \alias{predict.ampgram_model}
-\title{Predict amyloids}
+\title{Predict antimicrobial peptides}
 \usage{
 \method{predict}{ampgram_model}(object, newdata, ...)
 }
@@ -15,5 +15,5 @@
 \item{...}{further arguments passed to or from other methods.}
 }
 \description{
-Recognizes amyloids using AmpGram algorithm.
+Recognizes antimicrobial peptides using the AmpGram algorithm.
 }

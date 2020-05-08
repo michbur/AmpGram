@@ -1,6 +1,6 @@
-#' Predict amyloids
+#' Predict antimicrobial peptides
 #'
-#' Recognizes amyloids using AmpGram algorithm.
+#' Recognizes antimicrobial peptides using the AmpGram algorithm.
 #' @param object \code{ampgram_model} object.
 #' @param newdata \code{list} of sequences (for example as given by
 #' \code{\link[biogram]{read_fasta}}).
