@@ -2,7 +2,7 @@ library(shiny)
 library(shinythemes)
 
 shinyUI(fluidPage(tags$head(includeScript("ga.js")),
-                  title = "AmyloGram",
+                  title = "AmpGram",
                   theme = shinytheme("united"),
 
                   headerPanel(""),
