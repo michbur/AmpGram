@@ -20,7 +20,7 @@ predict.ampgram_model <- function(object, newdata, ...) {
                          x = decode_ngrams(ngrams), fixed = TRUE)
   
   
-  lapply(newdata, function(ith_seq) {
+  all_preds <- lapply(newdata, function(ith_seq) {
     ngram_count <- find_ngrams(seq = ith_seq, decoded_ngrams = decoded_ngrams)
     colnames(ngram_count) <- ngrams
     all_mers_pred <- predict(object[["rf_mers"]], ngram_count)[["predictions"]][, 2]
@@ -31,7 +31,14 @@ predict.ampgram_model <- function(object, newdata, ...) {
                 single_prot_pred = single_prot_pred)
     
     class(res) <- "single_ampgram_pred"
+    
+    res
   })
+  
+  if(is.null(names(all_preds))) 
+    names(all_preds) <- paste0("seq", 1L:length(all_preds))
+  
+  all_preds
 }
 
 

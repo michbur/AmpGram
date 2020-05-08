@@ -44,6 +44,7 @@ Suggests:
     DT,
     ggplot2,
     shinythemes,
+    shinycssloaders,
     spelling
 Repository: CRAN
 RoxygenNote: 7.1.0

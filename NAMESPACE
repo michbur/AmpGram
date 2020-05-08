@@ -3,6 +3,7 @@
 S3method(predict,ampgram_model)
 export(AmpGram_gui)
 export(install_AmpGramModel)
+export(pred2df)
 export(read_txt)
 importFrom(biogram,binarize)
 importFrom(biogram,decode_ngrams)

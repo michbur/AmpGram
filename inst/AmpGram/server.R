@@ -1,13 +1,13 @@
 library(shiny)
 library(ggplot2)
 library(AmpGram)
-library(dplyr)
+library(AmpGramModel)
 library(DT)
 library(shinythemes)
+library(shinycssloaders)
 library(markdown)
 
 data(AmpGram_model)
-data(spec_sens)
 
 options(shiny.maxRequestSize=10*1024^2)
 
@@ -20,10 +20,29 @@ my_DT <- function(x, ...)
   datatable(x, ..., escape = FALSE, extensions = 'Buttons', filter = "top", rownames = FALSE,
             style = "bootstrap")
 
+plot_single_protein <- function(single_prot) {
+  p <- ggplot(single_prot, aes(x = start, xend = end,
+                               y = pred, yend = pred, color = decision,
+                               linetype = decision)) +
+    geom_segment() +
+    geom_hline(yintercept = 0.5, color = "red") +
+    ggtitle(single_prot[["seq_name"]][1]) +
+    scale_x_continuous("Position") +
+    scale_y_continuous("Probability of AMP", limits = c(0, 1)) +
+    scale_color_manual("AMP", values = c("#878787", "black")) + 
+    scale_linetype_manual("AMP", values = c("dashed", "solid")) + 
+    theme_bw() +
+    theme(plot.title = element_text(hjust = 0.5),
+          legend.position = "bottom")
+  
+  if(max(single_prot[["end"]] > 100))
+    p <- p + scale_x_continuous("Position", breaks = seq(0, max(single_prot[["end"]]), 
+                                                         by = 20))
+  
+  p
+}
 
 shinyServer(function(input, output) {
-  
-  
   
   prediction <- reactive({
     
@@ -39,13 +58,13 @@ shinyServer(function(input, output) {
     if(exists("input_sequences")) {
       if(length(input_sequences) > 50) {
         #dummy error, just to stop further processing
-        stop("Too many sequences.")
+        stop("Too many sequences. Please use AmpGram locally.")
       } else {
-        if(any(lengths(input_sequences) < 6)) {
+        if(any(lengths(input_sequences) < 10)) {
           #dummy error, just to stop further processing
-          stop("The minimum length of the sequence is 6 amino acids.")
+          stop("The minimum length of the sequence is 10 amino acids.")
         } else {
-          predict(AmyloGram_model, input_sequences)
+          predict(AmpGram_model, input_sequences)
         }
       }
     } else {
@@ -53,14 +72,62 @@ shinyServer(function(input, output) {
     }
   })
   
-  decision <- reactive({
+  decision_table <- reactive({
     if(!is.null(prediction())) {
-      res <- AmyloGram:::make_decision(prediction()[["overview"]], input[["cutoff"]])
-      colnames(res) <- c("Input name", "Amyloid probability", "Is amyloid?")
-      res
+      pred2df(prediction())
     }
   })
   
+  output[["decision_table"]] <- renderDataTable({
+    df <- decision_table()
+    colnames(df) <- c("Protein name", "AMP probability")
+    my_DT(df) %>% 
+      formatRound(2, 4) 
+    
+  })
+  
+  detailed_preds <- reactive(({
+    validate(
+      need(input[["decision_table_rows_selected"]], 
+           "Select at least one row in the Results table")
+    )
+    
+    selected_pred_data <- prediction()[input[["decision_table_rows_selected"]]]
+    
+    detailed_pred_list <- lapply(1L:length(selected_pred_data), function(ith_pred_id) {
+      ith_pred <- selected_pred_data[[ith_pred_id]]
+      
+      data.frame(seq_name = names(selected_pred_data)[ith_pred_id],
+                 start = 1L:length(ith_pred[["all_mers_pred"]]), 
+                 end = 1L:length(ith_pred[["all_mers_pred"]]) + 9, 
+                 pred = ith_pred[["all_mers_pred"]],
+                 decision = ith_pred[["all_mers_pred"]] > 0.5)
+    })
+    
+  }))
+  
+  
+  output[["detailed_preds"]] <- renderUI({
+    detailed_preds_list <- lapply(1L:length(detailed_preds()), function(i) {
+      list(plotOutput(paste0("detailed_plot", i)))
+    })
+    c(list(downloadButton("download_long", "Download long output (without graphics)"),
+           downloadButton("download_long_graph", "Download long output (with graphics)")),
+      do.call(tagList, unlist(detailed_preds_list, recursive = FALSE)))
+  })
+  
+  
+  for (i in 1L:300) {
+    local({
+      my_i <- i
+      
+      output[[paste0("detailed_plot", my_i)]] <- renderPlot(plot_single_protein(detailed_preds()[[my_i]]))
+    })
+  }
+  
+  output[["detailed_tab"]] <- renderUI({
+    uiOutput("detailed_preds")
+  })
   
   output[["dynamic_ui"]] <- renderUI({
     if (!is.null(input[["seq_file"]]))
@@ -84,44 +151,6 @@ shinyServer(function(input, output) {
     }
   })
   
-  output[["pred_table"]] <- renderDataTable({
-    #formatRound(my_DT(decision()), 2, 4)
-    decision() %>% 
-      my_DT() %>% 
-      formatRound(2, 4)
-  })
-  
-  output[["ar_table"]] <- renderDataTable({
-    #formatRound(my_DT(decision()), 2, 4)
-    group_by(prediction()[["detailed"]], Protein) %>% 
-      summarise(ar = mean(Probability > input[["cutoff"]])) %>% 
-      rename('Fraction of amyloid residues' = ar) %>% 
-      my_DT() %>% 
-      formatRound(2, 4)
-  })
-  
-  
-  output[["pred_plots"]] <- renderPlot({
-    prediction()[["detailed"]] %>% 
-      group_by(Protein) %>% 
-      mutate(Position = 1L:length(Protein)) %>% 
-      ggplot(aes(x = Position, y = Probability)) +
-      geom_line() +
-      geom_hline(yintercept = input[["cutoff"]], color = "blue", linetype = "dashed") +
-      scale_y_continuous("Probability of self-assembly", limits = c(0, 1)) +
-      scale_x_continuous(expand = c(0, 0)) +
-      facet_wrap(~ Protein, ncol = 1) +
-      theme_bw()
-  })
-  
-  output[["sensitivity"]] <- renderUI({
-    dat <- spec_sens[spec_sens[["Cutoff"]] == input[["cutoff"]], ]
-    HTML(paste0("Sensitivity: ", round(dat[["Sensitivity"]], 4), "<br>",
-                "Specificity: ", round(dat[["Specificity"]], 4), "<br>",
-                "MCC: ", round(dat[["MCC"]], 4)
-    ))
-  })
-  
   output[["dynamic_tabset"]] <- renderUI({
     if(is.null(prediction())) {
       
@@ -137,20 +166,57 @@ shinyServer(function(input, output) {
     } else {
       tabsetPanel(
         tabPanel("Results (tabular)",
-                 dataTableOutput("pred_table")
-                 #downloadButton('downloadData', 'Download results (.csv)'),
+                 dataTableOutput("decision_table")
         ),
-        tabPanel("Detailed results",
-                 h4("Amyloid residues"),
-                 p("Residues are defined as belonging to the amyloid part of a protein, if their amyloid 
-                   probability is higher than the cut-off"),
-                 dataTableOutput("ar_table"),
-                 h4("Amyloid regions"),
-                 plotOutput("pred_plots", height = paste0(150 + nrow(decision()) * 100, "px"))
+        tabPanel("Results (graphical)",
+                 uiOutput("detailed_tab")
         )
       )
     }
   })
   
+  file_name <- reactive({
+    if(is.null(input[["seq_file"]][["name"]])) {
+      part_name <- "AmpGram_results"
+    } else {
+      part_name <- strsplit(input[["seq_file"]][["name"]], ".", fixed = TRUE)[[1]][1]
+    }
+    part_name
+  })
+  
+  output[["download_long"]] <- downloadHandler(
+    filename  = function() { 
+      paste0(file_name(), "_pred.txt") 
+    },
+    content <- function(file) {
+      sink(file, type = "output")
+      cat("Input file name: ", ifelse(is.null(input[["seq_file"]][["name"]]), "none",
+                                      input[["seq_file"]][["name"]]), "\n\n")
+      cat(paste0("Date: ", Sys.time()), "\n\n")
+      for (i in 1L:length(prediction())) {
+        cat("\n\n")
+        summary(prediction()[[i]])
+        cat("\n\n")
+      }
+      sink()
+    }
+  )
+  
+  output[["download_long_graph"]] <- downloadHandler(
+    filename  = function() { 
+      paste0(file_name(), "_pred.html") 
+    },
+    content <- function(file) {
+      src <- normalizePath("AmpGram-report.Rmd")
+      
+      # temporarily switch to the temp dir, in case you do not have write
+      # permission to the current working directory
+      owd <- setwd(tempdir())
+      on.exit(setwd(owd))
+      file.copy(src, "AmpGram-report.Rmd")
+      out <- render("AmpGram-report.Rmd", output_format = "html_document", file, quiet = TRUE)
+      file.rename(out, file)
+    }
+  )
   
 })
