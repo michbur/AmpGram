@@ -50,7 +50,6 @@ install_AmpGramModel()
 sequences <- read_fasta(system.file("AmpGram/prots.txt", package = "AmpGram"))
 predict(sequences,"new_file")
 ```
-After identyfication 
 Unix/macOS: curl
 ------------------------
 Function that installs AmpGramModel uses devtools library to install package from GitHub. 
