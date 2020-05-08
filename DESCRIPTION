@@ -41,9 +41,10 @@ Imports:
     shiny,
     stringi
 Suggests:
-    dplyr,
     DT,
-    markdown,
-    shinythemes
+    ggplot2,
+    shinythemes,
+    spelling
 Repository: CRAN
 RoxygenNote: 7.1.0
+Language: en-US

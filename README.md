@@ -27,7 +27,7 @@ library(AmpGram)
 AmpGram_gui()
 ```
 
-Antimicrobal peptides might be also identified in the batch mode:
+Antimicrobial peptides might be also identified in the batch mode:
 
 ```R
 data(AmpGram_model)
