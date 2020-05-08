@@ -1,3 +1,5 @@
+#' Convert predictions to data.frame
+#' 
 #' @param x results of prediction as produced by \code{\link{predict.ampgram_model}}
 #' @export
 pred2df <- function(x) {

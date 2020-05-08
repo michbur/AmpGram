@@ -2,6 +2,7 @@
 
 S3method(predict,ampgram_model)
 export(AmpGram_gui)
+export(get_AMPs)
 export(install_AmpGramModel)
 export(pred2df)
 export(read_txt)

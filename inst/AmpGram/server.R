@@ -20,6 +20,13 @@ my_DT <- function(x, ...)
   datatable(x, ..., escape = FALSE, extensions = 'Buttons', filter = "top", rownames = FALSE,
             style = "bootstrap")
 
+AMP_DT <- function(x, ...) {
+  df <- x
+  colnames(df) <- c("Putative AMP", "Probability")
+  formatRound(my_DT(df, ...), 2, 4) 
+}
+  
+
 plot_single_protein <- function(single_prot) {
   p <- ggplot(single_prot, aes(x = start, xend = end,
                                y = pred, yend = pred, color = decision,
@@ -29,8 +36,8 @@ plot_single_protein <- function(single_prot) {
     ggtitle(single_prot[["seq_name"]][1]) +
     scale_x_continuous("Position") +
     scale_y_continuous("Probability of AMP", limits = c(0, 1)) +
-    scale_color_manual("AMP", values = c("#878787", "black")) + 
-    scale_linetype_manual("AMP", values = c("dashed", "solid")) + 
+    scale_color_manual("AMP", values = c(No = "#878787", Yes = "black")) + 
+    scale_linetype_manual("AMP", values = c(No = "dashed", Yes = "solid")) + 
     theme_bw() +
     theme(plot.title = element_text(hjust = 0.5),
           legend.position = "bottom")
@@ -86,13 +93,18 @@ shinyServer(function(input, output) {
     
   })
   
-  detailed_preds <- reactive(({
+  selected_proteins <- reactive({
     validate(
       need(input[["decision_table_rows_selected"]], 
            "Select at least one row in the Results table")
     )
     
-    selected_pred_data <- prediction()[input[["decision_table_rows_selected"]]]
+    prediction()[input[["decision_table_rows_selected"]]]
+  })
+  
+  detailed_preds <- reactive(({
+    
+    selected_pred_data <- selected_proteins()
     
     detailed_pred_list <- lapply(1L:length(selected_pred_data), function(ith_pred_id) {
       ith_pred <- selected_pred_data[[ith_pred_id]]
@@ -101,15 +113,19 @@ shinyServer(function(input, output) {
                  start = 1L:length(ith_pred[["all_mers_pred"]]), 
                  end = 1L:length(ith_pred[["all_mers_pred"]]) + 9, 
                  pred = ith_pred[["all_mers_pred"]],
-                 decision = ith_pred[["all_mers_pred"]] > 0.5)
+                 decision = factor(ith_pred[["all_mers_pred"]] > 0.5, 
+                                   levels = c("FALSE", "TRUE"),
+                                   labels = c("No", "Yes")))
     })
     
   }))
   
   
+  
   output[["detailed_preds"]] <- renderUI({
     detailed_preds_list <- lapply(1L:length(detailed_preds()), function(i) {
-      list(plotOutput(paste0("detailed_plot", i)))
+      list(plotOutput(paste0("detailed_plot", i)),
+           dataTableOutput(paste0("detailed_table", i)))
     })
     c(list(downloadButton("download_long", "Download long output (without graphics)"),
            downloadButton("download_long_graph", "Download long output (with graphics)")),
@@ -122,6 +138,7 @@ shinyServer(function(input, output) {
       my_i <- i
       
       output[[paste0("detailed_plot", my_i)]] <- renderPlot(plot_single_protein(detailed_preds()[[my_i]]))
+      output[[paste0("detailed_table", my_i)]] <- renderDataTable(AMP_DT(get_AMPs(selected_proteins()[[my_i]])))
     })
   }
   
