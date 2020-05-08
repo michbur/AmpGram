@@ -1,0 +1,17 @@
+.shiny-progress-container{
+    padding-top:30%;
+    top: -5px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(240,240,240, 0.2);
+    background-repeat:no-repeat;
+    background-position: center center;
+}
+
+.shiny-progress-container .progress-text{
+  font-size: 150%;
+  position:relative;
+  margin:auto;
+  background-color: rgba(240,240,240, 0.0);
+}

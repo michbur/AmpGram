@@ -2,52 +2,16 @@ library(shiny)
 library(ggplot2)
 library(AmpGram)
 library(AmpGramModel)
+library(ranger)
 library(DT)
 library(shinythemes)
-library(shinycssloaders)
 library(markdown)
+
+source("shiny-server-utils.R")
 
 data(AmpGram_model)
 
 options(shiny.maxRequestSize=10*1024^2)
-
-options(DT.options = list(dom = "Brtip",
-                          buttons = c("copy", "csv", "excel", "print"),
-                          pageLength = 50
-))
-
-my_DT <- function(x, ...)
-  datatable(x, ..., escape = FALSE, extensions = 'Buttons', filter = "top", rownames = FALSE,
-            style = "bootstrap")
-
-AMP_DT <- function(x, ...) {
-  df <- x
-  colnames(df) <- c("Putative AMP", "Probability")
-  formatRound(my_DT(df, ...), 2, 4) 
-}
-  
-
-plot_single_protein <- function(single_prot) {
-  p <- ggplot(single_prot, aes(x = start, xend = end,
-                               y = pred, yend = pred, color = decision,
-                               linetype = decision)) +
-    geom_segment() +
-    geom_hline(yintercept = 0.5, color = "red") +
-    ggtitle(single_prot[["seq_name"]][1]) +
-    scale_x_continuous("Position") +
-    scale_y_continuous("Probability of AMP", limits = c(0, 1)) +
-    scale_color_manual("AMP", values = c(No = "#878787", Yes = "black")) + 
-    scale_linetype_manual("AMP", values = c(No = "dashed", Yes = "solid")) + 
-    theme_bw() +
-    theme(plot.title = element_text(hjust = 0.5),
-          legend.position = "bottom")
-  
-  if(max(single_prot[["end"]] > 100))
-    p <- p + scale_x_continuous("Position", breaks = seq(0, max(single_prot[["end"]]), 
-                                                         by = 20))
-  
-  p
-}
 
 shinyServer(function(input, output) {
   
@@ -71,7 +35,7 @@ shinyServer(function(input, output) {
           #dummy error, just to stop further processing
           stop("The minimum length of the sequence is 10 amino acids.")
         } else {
-          predict(AmpGram_model, input_sequences)
+          predict_in_shiny(AmpGram_model, input_sequences)
         }
       }
     } else {

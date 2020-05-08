@@ -1,10 +1,10 @@
 library(shiny)
 library(shinythemes)
 
-shinyUI(fluidPage(tags$head(includeScript("ga.js")),
+shinyUI(fluidPage(tags$head(includeScript("ga.js"), 
+                            tags$link(rel = "stylesheet", type = "text/css", href = "progress.css")),
                   title = "AmpGram",
                   theme = shinytheme("united"),
-
                   headerPanel(""),
 
                   sidebarLayout(
