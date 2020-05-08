@@ -91,8 +91,7 @@ shinyServer(function(input, output) {
       list(plotOutput(paste0("detailed_plot", i)),
            dataTableOutput(paste0("detailed_table", i)))
     })
-    c(list(downloadButton("download_long", "Download long output (without graphics)"),
-           downloadButton("download_long_graph", "Download long output (with graphics)")),
+    c(list(downloadButton("download_long_graph", "Download long output (with graphics)")),
       do.call(tagList, unlist(detailed_preds_list, recursive = FALSE)))
   })
   
