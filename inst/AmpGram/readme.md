@@ -1,6 +1,6 @@
 <img src="AMP_log.png" alt="logo" style="width: 200px;"/>
 
-**AmyloGram** predicts amyloidogenic sequences (hot spots) in eukaryotic proteins using [random forests](https://www.stat.berkeley.edu/~breiman/RandomForests/cc_home.htm) and [n-gram analysis](http://github.com/michbur/biogram).  
+**AmpGram**  identifies antimicrobial peptides using [random forests](https://www.stat.berkeley.edu/~breiman/RandomForests/cc_home.htm) and [n-gram analysis](http://github.com/michbur/biogram).  
 
 **Restrictions**:
 * Be patient - calculations can take up to few minutes.  

@@ -41,3 +41,11 @@ for (i in prediction()) {
 
 ## About
 
+This analysis was provided by [**AmpGram**](https://github.com/michbur/AmpGram)
+
+
+```{r, echo=FALSE, fig.width=10, results='asis'}
+sessionInfo(pander())
+```
+
+
