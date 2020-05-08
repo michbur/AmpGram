@@ -27,13 +27,6 @@ library(AmpGram)
 AmpGram_gui()
 ```
 
-Antimicrobial peptides might be also identified in the batch mode:
-
-```R
-data(AmpGram_model)
-data(pep424)
-predict(AmpGram_model, pep424[1L:20])
-```
 
 Installing dependency: AmpGramModel
 ------------------------
@@ -48,6 +41,15 @@ You can install AmpGramModel using the AmpGram function:
 install_AmpGramModel()
 ```
 
+Antimicrobial peptides might be also identified in the batch mode:
+
+```R
+library(AmpGram)
+library(biogram)
+install_AmpGramModel()
+sequences <- read_fasta(system.file("AmpGram/prots.txt", package = "AmpGram"))
+predict(sequences,"new_file")
+```
 Unix/macOS: curl
 ------------------------
 Function that installs AmpGramModel uses devtools library to install package from GitHub. 
