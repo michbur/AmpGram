@@ -10,8 +10,7 @@ read_txt(connection)
 \item{connection}{a \code{\link{connection}} to the text (.txt) file.}
 }
 \value{
-a list of sequences. Each element has class \code{\link[seqinr]{SeqFastaAA}}. If
-connection contains no characters, function prompts warning and returns \code{NULL}.
+a list of sequences.
 }
 \description{
 Read sequence data saved in text file.

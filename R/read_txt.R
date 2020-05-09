@@ -4,8 +4,7 @@
 #'
 #' @param connection a \code{\link{connection}} to the text (.txt) file.
 #' @keywords manip
-#' @return a list of sequences. Each element has class \code{\link[seqinr]{SeqFastaAA}}. If
-#' connection contains no characters, function prompts warning and returns \code{NULL}.
+#' @return a list of sequences. 
 #' @details The input file should contain one or more amino acid sequences separated by 
 #' empty line(s).
 #' @importFrom biogram read_fasta
