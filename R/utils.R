@@ -66,10 +66,10 @@ require_AmpGramModel <- function() {
               tryCatch(install_AmpGramModel(),
                        finally = if (!is_AmpGramModel_installed()) 
                          warning("There was an error during an attempt to install 'AmpGramModel' package.", call. = FALSE)),
-              warning("You cannot access full functionality of this package without having installed 'AmpGramModel'. You can do it manually by calling 'devtools::install_github('michbur/AmpGramModel')'", call. = FALSE),
+              message("You cannot access full functionality of this package without having installed 'AmpGramModel'. You can do it manually by calling 'devtools::install_github('michbur/AmpGramModel')'", call. = FALSE),
               {options(AmpGram_suppress_prompt = TRUE)
                 cat("Ok, but you cannot access full functionality of this package without having installed 'AmpGramModel'")},
-              warning("You cannot access full functionality of this package without having installed 'AmpGramModel'. You can do it manually by calling 'devtools::install_github('michbur/AmpGramModel')'", call. = FALSE)
+              message("You cannot access full functionality of this package without having installed 'AmpGramModel'. You can do it manually by calling 'devtools::install_github('michbur/AmpGramModel')'", call. = FALSE)
       )
     } 
   } else {

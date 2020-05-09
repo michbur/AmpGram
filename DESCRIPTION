@@ -1,6 +1,6 @@
 Package: AmpGram
 Type: Package
-Title: Prediction of antimicrobial peptides
+Title: Prediction of Antimicrobial Peptides
 Version: 1.0
 LazyData: TRUE
 Date: 2020-05-08
