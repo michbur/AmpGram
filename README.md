@@ -1,3 +1,4 @@
+[![Build Status](https://api.travis-ci.org/michbur/AmpGram.png)](https://travis-ci.org/michbur/AmpGram)
 
 <img src="https://github.com/michbur/AmpGram/blob/master/inst/AmpGram/AMP_log.png" alt="AmpGram" style="height: 200px;"/>
 
