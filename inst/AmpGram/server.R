@@ -83,6 +83,9 @@ shinyServer(function(input, output) {
                                    labels = c("No", "Yes")))
     })
     
+    names(detailed_pred_list) <- names(selected_pred_data)
+    detailed_pred_list
+    
   }))
   
   
@@ -101,7 +104,10 @@ shinyServer(function(input, output) {
     local({
       my_i <- i
       
-      output[[paste0("detailed_plot", my_i)]] <- renderPlot(plot_single_protein(detailed_preds()[[my_i]]))
+      output[[paste0("detailed_plot", my_i)]] <- renderPlot({
+        #browser()
+        plot_single_protein(detailed_preds()[[my_i]])
+        })
       output[[paste0("detailed_table", my_i)]] <- renderDataTable(AMP_DT(get_AMPs(selected_proteins()[[my_i]])))
     })
   }
@@ -137,17 +143,18 @@ shinyServer(function(input, output) {
       
       tabPanel(title = "Sequence input",
                tags$textarea(id = "text_area", style = "width:90%",
-                             placeholder="Paste sequences (FASTA format required) here...", rows = 22, cols = 60, ""),
-               p(""),
+                             placeholder="Paste sequences (FASTA format required) here...", 
+                             rows = 22, cols = 60, ""),
+               tags$p(""),
                actionButton("use_area", "Submit data from field above"),
-               p(""),
+               tags$p(""),
                fileInput('seq_file', 'Submit .fasta or .txt file:'))
       
       
     } else {
       tabsetPanel(
         tabPanel("Results",
-                 p("Select at least one protein to produce detailed results."), 
+                 tags$h4("Select at least one protein to produce detailed results."), 
                  dataTableOutput("decision_table")
         ),
         tabPanel("Detailed results",

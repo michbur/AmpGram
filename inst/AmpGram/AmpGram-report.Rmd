@@ -34,7 +34,7 @@ cat(paste0("**Date**: ", Sys.time()), "\n\n")
 ```{r, echo=FALSE, fig.width=10, results='asis'}
 
 for (i in 1L:length(detailed_preds())) {
-  cat("\n\n## ", names(detailed_preds())[[i]], sep = "")
+  cat("\n\n## ", names(detailed_preds())[[i]], "\n\n", sep = "")
   print(plot_single_protein(detailed_preds()[[i]]))
   print(knitr::kable(get_AMPs(selected_proteins()[[i]])))
 }
