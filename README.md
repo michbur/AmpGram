@@ -18,7 +18,7 @@ install.packages("AmpGram")
 You can install the latest development version of the package:
 
 ```R
-source("https://install-github.me/michbur/AmpGram")
+source("https://raw.githubusercontent.com/r-lib/remotes/master/install-github.R")$value("michbur/AmpGram")
 ```
 
 After installation GUI can be accessed locally:
