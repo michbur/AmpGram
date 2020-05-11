@@ -58,7 +58,7 @@ predict_in_shiny <- function(object, newdata) {
       class(res) <- "single_ampgram_pred"
       
       prediction_percentage <<- prediction_percentage + 1/length(newdata)*100
-      incProgress(1/length(newdata), detail = paste0("Please wait.\n", round(prediction_percentage, 2), 
+      incProgress(1/length(newdata), detail = paste0(round(prediction_percentage, 2), 
                                                      "% proteins analyzed"))
       
       res
