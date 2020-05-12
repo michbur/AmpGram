@@ -10,7 +10,12 @@ get_AMPs(x)
 \item{x}{AmpGram predictions for a single protein}
 }
 \value{
-a data.frame with sequences recognized as antimicrobial peptides.
+a data.frame with sequences recognized as antimicrobial peptides (AMPs). 
+It consists of two columns:
+\describe{
+  \item{putative_AMP}{amino acid sequence of a 10-mer (subsequence of an analyzed peptide)
+  predicted as AMP.}
+  \item{prob}{Probability with which a 10-mer is recognized as AMP.}}
 }
 \description{
 Function gets sequences recognized as antimicrobial peptides and returns as data.frame.
