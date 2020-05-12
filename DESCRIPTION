@@ -48,6 +48,7 @@ Suggests:
     rmarkdown,
     shinythemes,
     spelling
+Additional_repositories: https://github.com/michbur/AmpGramModel
 Repository: CRAN
 RoxygenNote: 7.1.0
 Language: en-US

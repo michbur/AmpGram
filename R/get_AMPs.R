@@ -2,7 +2,7 @@
 #' 
 #' Function gets sequences recognized as antimicrobial peptides and returns as data.frame. 
 #' @param x AmpGram predictions for a single protein
-#' @return a data.frame with sequences recognized as antimicrobial peptides
+#' @return a data.frame with sequences recognized as antimicrobial peptides.
 #' @export
 #' @examples 
 #' data(AmpGram_predictions)

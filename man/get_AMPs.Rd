@@ -10,7 +10,7 @@ get_AMPs(x)
 \item{x}{AmpGram predictions for a single protein}
 }
 \value{
-a data.frame with sequences recognized as antimicrobial peptides
+a data.frame with sequences recognized as antimicrobial peptides.
 }
 \description{
 Function gets sequences recognized as antimicrobial peptides and returns as data.frame.

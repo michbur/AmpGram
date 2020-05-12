@@ -6,6 +6,9 @@
 \usage{
 AmpGram_gui()
 }
+\value{
+No return value, called for side effects.
+}
 \description{
 Launches graphical user interface that predicts presence of 
 antimicrobial peptides.
@@ -14,3 +17,6 @@ antimicrobial peptides.
  Any ad-blocking software may cause malfunctions.
 }
 
+\seealso{
+\code{\link[shiny]{runApp}}
+}
