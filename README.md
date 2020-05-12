@@ -9,11 +9,6 @@ AmpGram identifies antimicrobial peptides using n-gram encoding and random fores
 
 Local instance of AmpGram
 ------------------------
-AmpGram can be used installed from CRAN as the R package:
-
-```R
-install.packages("AmpGram")
-```
 
 You can install the latest development version of the package:
 
