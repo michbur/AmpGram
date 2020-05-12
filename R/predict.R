@@ -3,7 +3,7 @@
 #' Recognizes antimicrobial peptides using the AmpGram algorithm.
 #' @param object \code{ampgram_model} object.
 #' @param newdata \code{list} of sequences (for example as given by
-#' \code{\link[biogram]{read_fasta}} or \code{\link(read_txt)}).
+#' \code{\link[biogram]{read_fasta}} or \code{\link{read_txt}}).
 #' @param ... further arguments passed to or from other methods.
 #' @export
 #' @details AmpGram requires the external package, AmpGramModel, which 

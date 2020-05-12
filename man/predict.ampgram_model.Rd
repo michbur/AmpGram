@@ -10,7 +10,7 @@
 \item{object}{\code{ampgram_model} object.}
 
 \item{newdata}{\code{list} of sequences (for example as given by
-\code{\link[biogram]{read_fasta}} or \code{\link(read_txt)}).}
+\code{\link[biogram]{read_fasta}} or \code{\link{read_txt}}).}
 
 \item{...}{further arguments passed to or from other methods.}
 }
