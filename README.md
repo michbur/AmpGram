@@ -26,12 +26,12 @@ AmpGram_gui()
 
 Installing dependency: AmpGramModel
 ------------------------
-To be able to use AmpGram properly, you should have installed 'AmpGramModel' package available via GitHub. 
+To be able to use AmpGram properly, you should have installed the 'AmpGramModel' package available via GitHub. 
 AmpGramModel contains stacked random forest model and informative n-grams required for prediction of antimicrobial peptides.
 Due to the large size of a model, it needs to be stored in the external repository, as CRAN do not allow upload of files
 larger than 5 MB. 
 
-You can install AmpGramModel using the AmpGram function:
+You can install AmpGramModel using the install_AmpGramModel function:
 
 ```R
 install_AmpGramModel()
@@ -49,8 +49,8 @@ predict(AmpGram_model, sequences)
 ```
 Unix/macOS: curl
 ------------------------
-Function that installs AmpGramModel uses devtools library dependent on curl. 
-If you encounter an error concerning curl, please follow instructions below to install curl (adapted from https://github.com/jeroen/curl).
+
+The curl library is one of the dependencies of the AmpGram package and requires additional, non-R software. If you encounter an error concerning curl, please follow instructions below to install curl (adapted from https://github.com/jeroen/curl).
 
 Binary packages for OS-X or Windows can be installed directly from CRAN:
 
