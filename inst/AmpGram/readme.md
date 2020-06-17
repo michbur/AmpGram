@@ -9,4 +9,4 @@
 **Authors**: [Michal Burdukiewicz](https://github.com/michbur), Dominik Rafacz, Katarzyna Sidorczuk, Filip Pietluch
 
 **Citation**:
-Burdukiewicz, M., Sidorczuk, K., Rafacz, D., Pietluch, F., Chilimoniuk, J., Rödiger, S.  and Gagat, P. AmpGram: a proteome screening tool for prediction and design of antimicrobial peptides (in review).
+[Burdukiewicz, M., Sidorczuk, K., Rafacz, D., Pietluch, F., Chilimoniuk, J., Rödiger, S.  and Gagat, P. Proteomic Screening for Prediction and Design of Antimicrobial Peptides with AmpGram. Int. J. Mol. Sci. 2020, 21(12)](https://www.mdpi.com/1422-0067/21/12/4310/htm)

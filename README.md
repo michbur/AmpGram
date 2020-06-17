@@ -1,3 +1,5 @@
+[![published in: MDPI](https://img.shields.io/badge/published%20in-MDPI-green.svg)](https://www.mdpi.com/1422-0067/21/12/4310/htm)
+[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/AmpGram)](https://cran.r-project.org/package=AmpGram)
 [![Build Status](https://api.travis-ci.org/michbur/AmpGram.png)](https://travis-ci.org/michbur/AmpGram)
 
 <img src="https://github.com/michbur/AmpGram/blob/master/inst/AmpGram/AMP_log.png" alt="AmpGram" style="height: 200px;"/>
