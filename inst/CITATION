@@ -1,0 +1,11 @@
+citHeader("To cite AmpGram in publications, please use:")
+
+citEntry(entry = "Article",
+  author = "Burdukiewicz, Micha{\l} and Sidorczuk, Katarzyna and Rafacz, Dominik and Pietluch, Filip and Chilimoniuk, Jaros{\l}aw and R{\"o}diger, Stefan and Gagat, Przemys{\l}aw",
+  title = "Proteomic Screening for Prediction and Design of Antimicrobial Peptides with AmpGram",
+  year = "2020",
+  doi = "10.3390/ijms21124310",
+  journal = "International Journal of Molecular Sciences",
+  volume = "21",
+  textVersion = "Burdukiewicz, M., Sidorczuk, K., Rafacz, D., Pietluch, F., Chilimoniuk, J., Rödiger, S., and Gagat, P. (2020). Proteomic Screening for Prediction and Design of Antimicrobial Peptides with AmpGram. International Journal of Molecular Sciences 21, 4310."
+)
