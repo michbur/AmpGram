@@ -26,10 +26,10 @@ calculate_statistics <- function(pred) {
              frac_0.8_1 = sum(pred > 0.8 & pred <= 1)/length(pred)) 
 }
 
-find_ngrams <- function(seq, decoded_ngrams) {
+find_ngrams <- function(seq, decoded_ngrams, len = 10) {
   
-  end_pos <- 10L:length(seq)
-  start_pos <- end_pos - 9
+  end_pos <- len:length(seq)
+  start_pos <- end_pos - len - 1
   
   res <- binarize(do.call(rbind, lapply(1L:length(end_pos), function(ith_mer_id) {
     ten_mer <- paste0(seq[start_pos[ith_mer_id]:end_pos[ith_mer_id]], collapse = "")
