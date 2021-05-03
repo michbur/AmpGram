@@ -29,7 +29,7 @@ calculate_statistics <- function(pred) {
 find_ngrams <- function(seq, decoded_ngrams, len = 10) {
   
   end_pos <- len:length(seq)
-  start_pos <- end_pos - len - 1
+  start_pos <- end_pos - len + 1
   
   res <- binarize(do.call(rbind, lapply(1L:length(end_pos), function(ith_mer_id) {
     ten_mer <- paste0(seq[start_pos[ith_mer_id]:end_pos[ith_mer_id]], collapse = "")

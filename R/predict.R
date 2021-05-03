@@ -66,12 +66,12 @@ predict.ampgram_model <- function(object, newdata, ...) {
 
 
 # data(AmpGram_model)
-# sample_seq <- list(seq1 = c("F", "E", "N", "C", "N", "I", "T", "M", "G", "N", "M", "V", 
-#                             "R", "H", "I", "R", "W", "Y", "R", "D", "R", "Q", "K", "G", "D", 
-#                             "Y", "W", "W", "Y", "T", "I", "K", "Y", "S", "M", "A", "M", "I", 
+# sample_seq <- list(seq1 = c("F", "E", "N", "C", "N", "I", "T", "M", "G", "N", "M", "V",
+#                             "R", "H", "I", "R", "W", "Y", "R", "D", "R", "Q", "K", "G", "D",
+#                             "Y", "W", "W", "Y", "T", "I", "K", "Y", "S", "M", "A", "M", "I",
 #                             "A", "C", "N", "I", "N", "V", "T", "I", "N", "Q", "C", "V"),
-#                    seq2 = c("Q", "Y", "T", "S", "I", "M", "F", "L", "T", "A", "G", "H", 
-#                             "L", "A", "P", "W", "D", "R", "W", "C", "R", "S", "L", "T", "T", 
-#                             "W", "F", "G", "A", "P", "S", "A", "T", "Y", "P", "F", "F", "W", 
+#                    seq2 = c("Q", "Y", "T", "S", "I", "M", "F", "L", "T", "A", "G", "H",
+#                             "L", "A", "P", "W", "D", "R", "W", "C", "R", "S", "L", "T", "T",
+#                             "W", "F", "G", "A", "P", "S", "A", "T", "Y", "P", "F", "F", "W",
 #                             "E", "P", "E", "D", "I", "I", "I", "K", "P", "N", "T", "A"))
 # predict(AmpGram_model, sample_seq)
