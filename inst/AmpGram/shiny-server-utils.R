@@ -45,7 +45,7 @@ predict_in_shiny <- function(object, newdata) {
   prediction_percentage <- 0
   withProgress(message = "", value = 0, {
     all_preds <- lapply(1L:length(newdata), function(ith_seq_id) {
-      ith_seq <- newdata[[ith_seq_id]]
+      ith_seq <- toupper(newdata[[ith_seq_id]])
       ngram_count <- AmpGram:::find_ngrams(seq = ith_seq, decoded_ngrams = decoded_ngrams)
       colnames(ngram_count) <- ngrams
       all_mers_pred <- predict(object[["rf_mers"]], ngram_count)[["predictions"]][, 2]

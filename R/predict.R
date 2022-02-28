@@ -44,7 +44,7 @@ predict.ampgram_model <- function(object, newdata, ...) {
   
   
   all_preds <- pblapply(newdata, function(ith_seq) {
-    ngram_count <- find_ngrams(seq = ith_seq, decoded_ngrams = decoded_ngrams)
+    ngram_count <- find_ngrams(seq = toupper(ith_seq), decoded_ngrams = decoded_ngrams)
     colnames(ngram_count) <- ngrams
     all_mers_pred <- predict(object[["rf_mers"]], ngram_count)[["predictions"]][, 2]
     single_prot_pred <- predict(object[["rf_peptides"]], 
